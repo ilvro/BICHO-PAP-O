@@ -28,51 +28,6 @@ public class DialogueSystem : MonoBehaviour
             {
                 EndTyping();
             }
-            else
-            {
-                int rndnum = Random.Range(1, 8);
-
-                switch (rndnum)
-                {
-
-                    case 1:
-                        queuedDialog = "Como eu faço isso?";
-                        //StartTyping(queuedDialog);
-                        break;
-
-                    case 2:
-                        queuedDialog = "Porque eu existo?";
-                        //StartTyping(queuedDialog);
-                        break;
-
-                    case 3:
-                        queuedDialog = "Me tira daqui.";
-                        //StartTyping(queuedDialog);
-                        break;
-
-                    case 4:
-                        queuedDialog = "Flareon";
-                        //StartTyping(queuedDialog);
-                        break;
-
-                    case 5:
-                        queuedDialog = "Pai?";
-                        //StartTyping(queuedDialog);
-                        break;
-
-                    case 6:
-                        queuedDialog = "?????????????????????";
-                        //StartTyping(queuedDialog);
-                        break;
-                    case 7:
-                        queuedDialog = "E";
-                        //StartTyping(queuedDialog);
-                        break;
-
-                }
-                Debug.Log(rndnum);
-                StartTyping(queuedDialog);
-            }
         }
         
         if (isDialogActive)
@@ -91,7 +46,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    void StartTyping(string dialog)
+    public void StartTyping(string dialog)
     {
         dialogueText.gameObject.SetActive(true);
         isDialogActive = true;
