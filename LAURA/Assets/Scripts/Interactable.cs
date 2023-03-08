@@ -5,17 +5,19 @@ using TMPro;
 
 public class Interactable : MonoBehaviour
 {
-    public bool isInRange;
+    private bool isInRange;
     public KeyCode interactKey;
     public TMP_Text interactText;
     public Transform characterTransform;
     public DialogueSystem dialogueSystem;
-    public Animator animator;
-    [SerializeField] public string Text;
+    private Animator playerAnimator;
+    [SerializeField] public GameObject playerObject;
+    [SerializeField] public string displayText;
     [SerializeField] public string dialogueText;
     void Start()
     {
         interactText.gameObject.SetActive(false);
+        playerAnimator = playerObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,14 @@ public class Interactable : MonoBehaviour
             interactText.rectTransform.position = new Vector3(Screen.width / 2, Screen.height - 40, 0);
             if (Input.GetKeyDown(interactKey))
             {
-                interactAction();
+                if (!playerAnimator.GetBool("isInteracting")) // animator is also used as a storage for global variables
+                {
+                    interactAction();
+                }
+                else
+                {
+                    playerAnimator.SetBool("isInteracting", false);
+                }
             }
         }
     }
@@ -35,7 +44,7 @@ public class Interactable : MonoBehaviour
     void interactAction()
     {
         Debug.Log("interacted!");
-        animator.SetBool("isInteracting", true);
+        playerAnimator.SetBool("isInteracting", true);
         dialogueSystem.StartTyping(dialogueText);
     }
 
@@ -55,7 +64,7 @@ public class Interactable : MonoBehaviour
         {
             // player exited interactable area
             isInRange = false;
-            animator.SetBool("isInteracting", false);
+            playerAnimator.SetBool("isInteracting", false);
             StartCoroutine(opacityFadeOut(interactText));
         }
     }
@@ -69,7 +78,7 @@ public class Interactable : MonoBehaviour
     {
         Color color = text.color;
         color.a = 0;
-        interactText.text = Text;
+        interactText.text = displayText;
 
         text.gameObject.SetActive(true);
         
