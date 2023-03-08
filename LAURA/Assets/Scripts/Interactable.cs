@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     public TMP_Text interactText;
     public Transform characterTransform;
     public DialogueSystem dialogueSystem;
+    public Animator animator;
     [SerializeField] public string Text;
     [SerializeField] public string dialogueText;
     void Start()
@@ -34,6 +35,7 @@ public class Interactable : MonoBehaviour
     void interactAction()
     {
         Debug.Log("interacted!");
+        animator.SetBool("isInteracting", true);
         dialogueSystem.StartTyping(dialogueText);
     }
 
@@ -53,16 +55,17 @@ public class Interactable : MonoBehaviour
         {
             // player exited interactable area
             isInRange = false;
+            animator.SetBool("isInteracting", false);
             StartCoroutine(opacityFadeOut(interactText));
         }
     }
 
 
     // text: the text object
-    // fadeSpeed: speed in which the opacity fades in or out, 1.0 is slow while 5.0 is fast
+    // fadeSpeed: speed in which the opacity fades in or out, 1.0 is slow while 10.0 is almost instantaneous, but visible
     // direction: fade in/fade out
 
-    IEnumerator opacityFadeIn(TMP_Text text, float fadeSpeed = 7.0f)
+    IEnumerator opacityFadeIn(TMP_Text text, float fadeSpeed = 7f)
     {
         Color color = text.color;
         color.a = 0;
@@ -78,7 +81,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    IEnumerator opacityFadeOut(TMP_Text text, float fadeSpeed = 7.0f)
+    IEnumerator opacityFadeOut(TMP_Text text, float fadeSpeed = 7f)
     {
         Color color = text.color;
         while (color.a > 0)

@@ -1005,10 +1005,12 @@ GameObject:
   - component: {fileID: 2097920695}
   - component: {fileID: 2097920694}
   - component: {fileID: 2097920693}
-  - component: {fileID: 2097920696}
   - component: {fileID: 2097920697}
+  - component: {fileID: 2097920700}
+  - component: {fileID: 2097920699}
+  - component: {fileID: 2097920698}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Dialogue Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1107,25 +1109,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2097920696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097920692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81266aa1f21701d4ea1952366c1b8472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInRange: 0
-  interactKey: 101
-  interactText: {fileID: 155100327}
-  characterTransform: {fileID: 74753981}
-  DialogueSystem: {fileID: 0}
-  Text: Interact [E]
-  dialogueText: cu(bo)
 --- !u!61 &2097920697
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1152,6 +1135,62 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2097920698
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097920692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2097920699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097920692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81266aa1f21701d4ea1952366c1b8472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInRange: 0
+  interactKey: 101
+  interactText: {fileID: 155100327}
+  characterTransform: {fileID: 74753981}
+  dialogueSystem: {fileID: 2097920700}
+  animator: {fileID: 2097920698}
+  Text: Interact
+  dialogueText: cu (bo)
+--- !u!114 &2097920700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097920692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f273e37ee07c6148b703d7da3bbf3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 1595466331}
+  characterTransform: {fileID: 74753981}
+  typingSpeed: 0.02
+  queuedDialog: 
 --- !u!1001 &7527836174121089247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1215,5 +1254,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7527836174051057439, guid: 759d2012ef6e26149ac50ff05d84c346, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 759d2012ef6e26149ac50ff05d84c346, type: 3}
