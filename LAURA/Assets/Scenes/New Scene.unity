@@ -601,6 +601,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1001199516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7527836174051057512, guid: 759d2012ef6e26149ac50ff05d84c346, type: 3}
+  m_PrefabInstance: {fileID: 7527836174121089247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1205161717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1150,7 @@ Animator:
   m_GameObject: {fileID: 2097920692}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 713b772b1d0f74133a8ce94956352a48, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1167,14 +1172,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81266aa1f21701d4ea1952366c1b8472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInRange: 0
   interactKey: 101
   interactText: {fileID: 155100327}
   characterTransform: {fileID: 74753981}
   dialogueSystem: {fileID: 2097920700}
-  animator: {fileID: 2097920698}
-  Text: Interact
-  dialogueText: cu (bo)
+  playerObject: {fileID: 1001199516}
+  displayText: Interact [E]
+  dialogueText: cu(bo)
 --- !u!114 &2097920700
 MonoBehaviour:
   m_ObjectHideFlags: 0

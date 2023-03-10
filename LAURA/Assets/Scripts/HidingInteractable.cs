@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Interactable : MonoBehaviour
+public class HidingInteractable : MonoBehaviour
 {
     private bool isInRange;
     public KeyCode interactKey;
@@ -68,11 +68,6 @@ public class Interactable : MonoBehaviour
             StartCoroutine(opacityFadeOut(interactText));
         }
     }
-
-
-    // text: the text object
-    // fadeSpeed: speed in which the opacity fades in or out, 1.0 is slow while 10.0 is almost instantaneous, but visible
-    // direction: fade in/fade out
 
     IEnumerator opacityFadeIn(TMP_Text text, float fadeSpeed = 7f)
     {
