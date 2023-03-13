@@ -9,11 +9,10 @@ public class HidingInteractable : MonoBehaviour
     public KeyCode interactKey;
     public TMP_Text interactText;
     public Transform characterTransform;
-    public DialogueSystem dialogueSystem;
+    public HidingSystem hidingSystem;
     private Animator playerAnimator;
     [SerializeField] public GameObject playerObject;
     [SerializeField] public string displayText;
-    [SerializeField] public string dialogueText;
     void Start()
     {
         interactText.gameObject.SetActive(false);
@@ -45,7 +44,7 @@ public class HidingInteractable : MonoBehaviour
     {
         Debug.Log("interacted!");
         playerAnimator.SetBool("isInteracting", true);
-        dialogueSystem.StartTyping(dialogueText);
+        //playerAnimator.SetBool("isHiding", true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
