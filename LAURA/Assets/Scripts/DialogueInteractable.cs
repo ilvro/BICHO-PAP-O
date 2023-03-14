@@ -6,17 +6,27 @@ using TMPro;
 public class DialogueInteractable : MonoBehaviour
 {
     private bool isInRange;
-    public KeyCode interactKey;
-    public TMP_Text interactText;
-    public Transform characterTransform;
+    private KeyCode interactKey = KeyCode.E;
+    public TMP_Text TextObject;
     public DialogueSystem dialogueSystem;
-    private Animator playerAnimator;
-    [SerializeField] public GameObject playerObject;
+    public Animator playerAnimator;
+    public GameObject playerObject;
+    public Transform characterTransform;
     [SerializeField] public string displayText;
     [SerializeField] public string dialogueText;
     void Start()
     {
-        interactText.gameObject.SetActive(false);
+        // set up variables; dialogueSystem and TextObject dont work with setIfNull, will work on a fix
+        //setIfNull(ref TextObject, GameObject.Find("Canvas/Interactable Text").GetComponent<TMP_Text>()); // doesnt work with setIfNull, has to be manually defined on the inspector
+        dialogueSystem = FindObjectOfType<DialogueSystem>(); // doesnt work with setIfNull
+        setIfNull(ref playerObject, GameObject.Find("Player"));
+        setIfNull(ref characterTransform, playerObject.GetComponent<Transform>());
+        setIfNull(ref displayText, "Interact [E]");
+        setIfNull(ref dialogueText, "cu(bo)");
+        setIfNull(ref playerAnimator, GetComponent<Animator>());
+
+        //
+        TextObject.gameObject.SetActive(false);
         playerAnimator = playerObject.GetComponent<Animator>();
     }
 
@@ -26,7 +36,7 @@ public class DialogueInteractable : MonoBehaviour
         if (isInRange)
         {
             // position the text at the top-center of the screen
-            interactText.rectTransform.position = new Vector3(Screen.width / 2, Screen.height - 40, 0);
+            TextObject.rectTransform.position = new Vector3(Screen.width / 2, Screen.height - 40, 0);
             if (Input.GetKeyDown(interactKey))
             {
                 if (!playerAnimator.GetBool("isInteracting")) // animator is also used as a storage for global variables
@@ -54,7 +64,7 @@ public class DialogueInteractable : MonoBehaviour
         {
             // player can interact with the object
             isInRange = true;
-            StartCoroutine(opacityFadeIn(interactText));
+            StartCoroutine(opacityFadeIn(TextObject));
         }
     }
 
@@ -65,7 +75,7 @@ public class DialogueInteractable : MonoBehaviour
             // player exited interactable area
             isInRange = false;
             playerAnimator.SetBool("isInteracting", false);
-            StartCoroutine(opacityFadeOut(interactText));
+            StartCoroutine(opacityFadeOut(TextObject));
         }
     }
 
@@ -73,7 +83,7 @@ public class DialogueInteractable : MonoBehaviour
     {
         Color color = text.color;
         color.a = 0;
-        interactText.text = displayText;
+        TextObject.text = displayText;
 
         text.gameObject.SetActive(true);
         
@@ -96,5 +106,23 @@ public class DialogueInteractable : MonoBehaviour
         }
 
         text.gameObject.SetActive(false);
+    }
+
+    private void setIfNull<T>(ref T property, T value) where T: class
+    {
+        if (property?.Equals(null) == true || string.IsNullOrEmpty(property.ToString()))
+        {
+            Debug.Log("setting property " + typeof(T));
+            property = value;
+        }
+        else
+        {
+            // double check
+            if (EqualityComparer<T>.Default.Equals(property, default(T)))
+            {
+                Debug.Log("(other method) setting property " + typeof(T));
+                property = value;
+            }
+        }
     }
 }

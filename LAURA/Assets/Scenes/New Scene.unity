@@ -494,7 +494,9 @@ GameObject:
   m_Component:
   - component: {fileID: 466100463}
   - component: {fileID: 466100462}
+  - component: {fileID: 466100465}
   - component: {fileID: 466100464}
+  - component: {fileID: 466100466}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -565,14 +567,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 466100461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Script: {fileID: 11500000, guid: 54d12b7b57ae9f34886e8259d19d7749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 891c471c238cc3a4ab2413ea5290189a, type: 2}
-  isGlobal: 0
+  intensity: 0
+  smoothness: 0
+--- !u!114 &466100465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466100461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
   blendDistance: 0
   weight: 1
-  priority: 0
+  sharedProfile: {fileID: 11400000, guid: b2acd2574c5e06b4bb30eebc0bb911ea, type: 2}
+--- !u!65 &466100466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466100461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &902794943
 GameObject:
   m_ObjectHideFlags: 3
@@ -1069,6 +1098,8 @@ GameObject:
   - component: {fileID: 1770992464}
   - component: {fileID: 1770992463}
   - component: {fileID: 1770992462}
+  - component: {fileID: 1770992466}
+  - component: {fileID: 1770992465}
   m_Layer: 0
   m_Name: Wardrobe Test
   m_TagString: Untagged
@@ -1169,6 +1200,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770992465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770992460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7247de82fa603ad46ad6ec0c3feb8549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactKey: 101
+  interactText: {fileID: 155100327}
+  characterTransform: {fileID: 74753981}
+  hidingSystem: {fileID: 0}
+  playerObject: {fileID: 1001199516}
+  displayText: Interact [E]
+--- !u!114 &1770992466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770992460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad13683574893c4b92a130048fa0cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2072579889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,8 +1396,8 @@ GameObject:
   - component: {fileID: 2097920694}
   - component: {fileID: 2097920693}
   - component: {fileID: 2097920697}
+  - component: {fileID: 2097920701}
   - component: {fileID: 2097920700}
-  - component: {fileID: 2097920699}
   - component: {fileID: 2097920698}
   m_Layer: 0
   m_Name: Dialogue Square
@@ -1484,25 +1545,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &2097920699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097920692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81266aa1f21701d4ea1952366c1b8472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactKey: 101
-  interactText: {fileID: 155100327}
-  characterTransform: {fileID: 74753981}
-  dialogueSystem: {fileID: 2097920700}
-  playerObject: {fileID: 1001199516}
-  displayText: Interact [E]
-  dialogueText: cu(bo)
 --- !u!114 &2097920700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,6 +1561,25 @@ MonoBehaviour:
   characterTransform: {fileID: 74753981}
   typingSpeed: 0.02
   queuedDialog: 
+--- !u!114 &2097920701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097920692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81266aa1f21701d4ea1952366c1b8472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextObject: {fileID: 0}
+  dialogueSystem: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  playerObject: {fileID: 0}
+  characterTransform: {fileID: 0}
+  displayText: 
+  dialogueText: 
 --- !u!1001 &7527836174121089247
 PrefabInstance:
   m_ObjectHideFlags: 0

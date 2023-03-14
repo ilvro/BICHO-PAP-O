@@ -44,7 +44,8 @@ public class HidingInteractable : MonoBehaviour
     {
         Debug.Log("interacted!");
         playerAnimator.SetBool("isInteracting", true);
-        //playerAnimator.SetBool("isHiding", true);
+        playerAnimator.SetBool("isHiding", true);
+        // call hiding system functions here
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

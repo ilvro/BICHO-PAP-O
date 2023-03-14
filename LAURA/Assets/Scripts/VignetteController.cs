@@ -12,8 +12,11 @@ public class VignetteController : MonoBehaviour
 
     void Start()
     {
+        // change the intensity from a different script with:
+        // myObject.GetComponent<VignetteEffect>().SetIntensity(0.8f);
+
         volume = gameObject.AddComponent<Volume>();
-        volume.sharedProfile = new VolumeProfile();
+        volume.sharedProfile = ScriptableObject.CreateInstance<VolumeProfile>();
         vignette = volume.sharedProfile.Add<Vignette>();
         vignette.intensity.Override(intensity);
         vignette.smoothness.Override(smoothness);
